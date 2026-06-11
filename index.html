@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Híly ... laskavá AI kamarádka pro ženy, které se přejídají | HEALLO®</title>
+  <meta name="description" content="Aplikace Heallo s AI kamarádkou Híly pomáhá ženám s emočním přejídáním. Somatické záznamy, vzorce chutí, menstruační cyklus a okamžitá pomoc při záchvatu. Zdarma v beta verzi.">
+  <meta name="keywords" content="emoční přejídání, záchvatovité přejídání, chutě na sladké, intuitivní stravování, aplikace pro ženy, vztah k jídlu, somatika">
+  <link rel="canonical" href="https://hily.myheallo.cc/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Híly ... kamarádka pro chvíle, kdy vás chuť táhne pryč od sebe">
+  <meta property="og:description" content="Žádné kalorické tabulky. Žádné zákazy. Aplikace, která vám pomůže pochopit, co vaše chutě doopravdy říkají. Zdarma v beta verzi.">
+  <meta property="og:url" content="https://hily.myheallo.cc/">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:site_name" content="HEALLO®">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpath d='M60 8 C78 34 96 52 96 74 a36 36 0 0 1 -72 0 C24 52 42 34 60 8 Z' fill='%239A6070'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Heallo s Híly",
+    "operatingSystem": "Web, iOS (připravujeme)",
+    "applicationCategory": "HealthApplication",
+    "description": "Aplikace pro ženy pracující s emočním přejídáním. Somatické záznamy chutí, AI kamarádka Híly, vzorce a menstruační cyklus.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CZK" },
+    "author": { "@type": "Person", "name": "Kateřina", "url": "https://www.katerinaheallo.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Je Híly náhrada terapie?","acceptedAnswer":{"@type":"Answer","text":"Ne. Híly je nástroj pro sebepoznání a podporu. Nenahrazuje odbornou lékařskou ani psychologickou péči. Pokud se trápíte s poruchou příjmu potravy, obraťte se prosím na odborníka."}},
+      {"@type":"Question","name":"Kolik aplikace stojí?","acceptedAnswer":{"@type":"Answer","text":"V beta verzi je Heallo úplně zdarma. Hledáme ženy, které ji pomohou testovat a vylepšovat."}},
+      {"@type":"Question","name":"Co se děje s mými daty?","acceptedAnswer":{"@type":"Answer","text":"Vaše záznamy vidíte jen vy. Data jsou chráněná na úrovni databáze a nikdy je neprodáváme třetím stranám."}},
+      {"@type":"Question","name":"Co je intuitivní stravování?","acceptedAnswer":{"@type":"Answer","text":"Přístup, který místo vnějších pravidel vrací důvěru vlastnímu tělu ... jíst, když máte hlad, přestat, když jste spokojená, a nerozdělovat jídlo na dobré a špatné."}}
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --accent: #9A6070; --accent-dark: #7A4A58; --accent-light: #F5EDEF; --accent-border: #E8D4D8;
+      --text: #111111; --text-mid: #444444; --text-muted: #888888; --text-faint: #BBBBBB;
+      --border: #E8E8E8; --border-soft: #F0F0F0; --bg: #FFFFFF; --bg-soft: #F8F8F8;
+      --peach: #FFD9C8; --peach-d: #E8835A; --sky: #CDE4F5; --sky-d: #4A90C2;
+      --mint: #CDEBD8; --mint-d: #3F9D68; --sun: #FFE9B8; --sun-d: #D9A23C;
+      --lilac: #E4DCF5; --lilac-d: #7B61B8;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Poppins', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--text); background: var(--bg); line-height: 1.65; font-size: 16px; overflow-x: hidden; }
+    img { max-width: 100%; }
+    a { color: inherit; }
+
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; position: relative; }
+    .narrow { max-width: 720px; }
+
+    .label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; color: var(--accent); }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; }
+    h2 { font-size: clamp(28px, 5vw, 42px); margin: 10px 0 18px; }
+
+    /* bubliny v pozadí */
+    .blob { position: absolute; width: 320px; height: 320px; border-radius: 50%; z-index: -1; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-soft); }
+    .nav-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; max-width: 1040px; margin: 0 auto; }
+    .brand { font-family: var(--serif); font-size: 21px; letter-spacing: 4px; text-decoration: none; }
+    .brand sup { font-size: 9px; color: var(--text-muted); }
+    .nav-cta { background: var(--accent); color: #fff; padding: 10px 22px; border-radius: 50px; text-decoration: none; font-size: 13px; font-weight: 600; transition: .2s; }
+    .nav-cta:hover { background: var(--accent-dark); }
+
+    /* HERO */
+    .hero { padding: 72px 0 60px; text-align: center; position: relative; overflow: hidden; }
+    .hero .blob:nth-child(1) { background: var(--peach); opacity: .45; top: -120px; left: -120px; }
+    .hero .blob:nth-child(2) { background: var(--sky); opacity: .4; top: 40px; right: -140px; }
+    .hero .blob:nth-child(3) { background: var(--mint); opacity: .35; bottom: -160px; left: 10%; }
+    .mascot { width: 110px; margin-bottom: 18px; animation: breathe 4.4s ease-in-out infinite; }
+    @keyframes breathe { 0%,100% { transform: scale(1);} 50% { transform: scale(1.05);} }
+    .hero h1 { font-size: clamp(34px, 6.5vw, 58px); max-width: 760px; margin: 0 auto 18px; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero p.sub { font-size: 17px; color: var(--text-mid); max-width: 560px; margin: 0 auto 30px; }
+    .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: linear-gradient(120deg, var(--accent), var(--accent-dark)); color: #fff; padding: 16px 34px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 15px; box-shadow: 0 8px 24px rgba(154,96,112,.3); transition: .25s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(154,96,112,.4); }
+    .btn-ghost { padding: 16px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 15px; color: var(--accent-dark); border: 1.5px solid var(--accent-border); background: #fff; transition: .2s; }
+    .btn-ghost:hover { border-color: var(--accent); }
+    .hero .note { margin-top: 16px; font-size: 12.5px; color: var(--text-muted); }
+
+    section { padding: 70px 0; position: relative; overflow: hidden; }
+
+    /* PAIN */
+    .pain { background: var(--bg-soft); }
+    .pain-list { display: grid; gap: 14px; max-width: 640px; margin: 26px auto 0; }
+    .pain-item { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 18px 22px; font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--text-mid); }
+    .pain-close { text-align: center; margin-top: 30px; font-size: 17px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .pain-close strong { font-family: var(--serif); font-size: 21px; }
+
+    /* HOW */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 34px; }
+    .step { border-radius: 22px; padding: 26px; }
+    .step .num { font-family: var(--serif); font-size: 34px; font-weight: 600; }
+    .step h3 { font-size: 22px; margin: 6px 0 8px; }
+    .step p { font-size: 13.5px; color: var(--text-mid); }
+
+    /* FEATURES */
+    .features { background: var(--bg-soft); }
+    .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 34px; }
+    .feat { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 22px; }
+    .feat .emoji { font-size: 26px; }
+    .feat h3 { font-size: 20px; margin: 8px 0 6px; }
+    .feat p { font-size: 13.5px; color: var(--text-mid); }
+
+    /* KATKA */
+    .katka blockquote { font-family: var(--serif); font-style: italic; font-size: clamp(20px, 3.4vw, 27px); line-height: 1.5; color: var(--text); max-width: 700px; margin: 24px auto; }
+    .katka .sig { color: var(--text-muted); font-size: 14px; }
+    .katka .sig a { color: var(--accent-dark); }
+
+    /* FAQ */
+    .faq details { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .faq summary { cursor: pointer; font-weight: 600; font-size: 16px; list-style: none; display: flex; justify-content: space-between; }
+    .faq summary::after { content: '+'; color: var(--accent); font-size: 22px; }
+    .faq details[open] summary::after { content: '...'; }
+    .faq p { margin-top: 10px; color: var(--text-mid); font-size: 14.5px; }
+
+    /* FINAL CTA */
+    .final { text-align: center; background: linear-gradient(160deg, var(--accent-light), #fff); }
+    .final h2 { max-width: 640px; margin-left: auto; margin-right: auto; }
+
+    footer { border-top: 1px solid var(--border-soft); padding: 34px 0; font-size: 12.5px; color: var(--text-muted); }
+    .foot-row { display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: center; }
+    footer a { color: var(--text-muted); }
+    .disclaimer { margin-top: 16px; font-size: 11.5px; color: var(--text-faint); max-width: 720px; }
+
+    .center { text-align: center; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <a class="brand" href="#">HEALLO<sup>®</sup></a>
+    <a class="nav-cta" href="https://heallo-flame.vercel.app">Vyzkoušet zdarma</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="blob"></div><div class="blob"></div><div class="blob"></div>
+  <div class="container">
+    <svg class="mascot" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs><linearGradient id="d" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C28A99"/><stop offset="1" stop-color="#9A6070"/></linearGradient></defs>
+      <path d="M60 8 C78 34 96 52 96 74 a36 36 0 0 1 -72 0 C24 52 42 34 60 8 Z" fill="url(#d)"/>
+      <ellipse cx="44" cy="52" rx="7" ry="12" fill="#fff" opacity=".35" transform="rotate(-18 44 52)"/>
+      <path d="M42 72 q6 -7 12 0 M66 72 q6 -7 12 0 M50 84 q10 9 20 0" stroke="#3D2630" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+      <circle cx="36" cy="80" r="5.5" fill="#FFB3C0" opacity=".65"/><circle cx="84" cy="80" r="5.5" fill="#FFB3C0" opacity=".65"/>
+      <path d="M60 8 C63 2 70 0 74 2 C72 8 66 11 60 8 Z" fill="#7DA56B"/>
+    </svg>
+    <p class="label">Seznamte se, tohle je Híly</p>
+    <h1>Kamarádka pro chvíle, kdy vás chuť <em>táhne pryč od sebe</em></h1>
+    <p class="sub">Aplikace pro ženy, které už nechtějí bojovat s jídlem. Žádné kalorické tabulky, žádné zákazy ... jen laskavá cesta zpátky k vlastnímu tělu.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="https://heallo-flame.vercel.app">Vyzkoušet zdarma</a>
+      <a class="btn-ghost" href="mailto:katerina@myheallo.info?subject=Chci%20testovat%20Heallo">Chci se zapojit do testování</a>
+    </div>
+    <p class="note">Beta verze · zdarma · funguje v mobilu i počítači, bez instalace</p>
+  </div>
+</header>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="container narrow center">
+    <p class="label">Možná se v tom najdete, možná ne</p>
+    <h2>Znáte ty večery?</h2>
+    <div class="pain-list">
+      <div class="pain-item">„Celý den jsem to zvládala ... a večer jsem zase stála u otevřené lednice."</div>
+      <div class="pain-item">„Vím přesně, co bych měla jíst. To není o vědění."</div>
+      <div class="pain-item">„Po každém přejedení přijde stud. A ten stud zaženu zase jídlem."</div>
+      <div class="pain-item">„Před ostatními jím normálně. To, co se děje doma, nevidí nikdo."</div>
+    </div>
+    <p class="pain-close"><strong>S vámi nic špatně není.</strong><br>
+    Vaše tělo dělá přesně to, co se naučilo, aby vás ochránilo. Jídlo bylo po ruce, když nic jiného nebylo. Híly vám pomůže uslyšet, co se pod tou chutí doopravdy děje.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="container center">
+    <p class="label">Jak Heallo funguje</p>
+    <h2>Tři kroky zpátky k sobě</h2>
+    <div class="steps">
+      <div class="step" style="background: var(--peach)">
+        <div class="num" style="color: var(--peach-d)">1</div>
+        <h3>Zapíšete chvíli s chutí</h3>
+        <p>Minutka: jaká emoce, kde v těle ji cítíte, jaký máte skutečný hlad. Híly hned odpoví ... lidsky, beze soudů.</p>
+      </div>
+      <div class="step" style="background: var(--sky)">
+        <div class="num" style="color: var(--sky-d)">2</div>
+        <h3>Híly skládá vaše vzorce</h3>
+        <p>Kdy chutě přicházejí, co je spouští, jak souvisí se spánkem a fází cyklu. Z jednotlivých dní se vynoří obraz.</p>
+      </div>
+      <div class="step" style="background: var(--mint)">
+        <div class="num" style="color: var(--mint-d)">3</div>
+        <h3>Rozumíte svému tělu</h3>
+        <p>Poznáte rozdíl mezi hladem a emocí. A v těžké chvíli máte po ruce dech, dotazník i kamarádku, která to zná.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="container center">
+    <p class="label">Co v aplikaci najdete</p>
+    <h2>Laskavá. Hravá. Vaše.</h2>
+    <div class="feat-grid">
+      <div class="feat"><div class="emoji">💬</div><h3>Híly ... AI kamarádka</h3><p>Píše jako žena, která emoční přejídání zná zevnitř. Tykáte si. Nikdy vás nesoudí a u vážných věcí vás nasměruje k odborné pomoci.</p></div>
+      <div class="feat"><div class="emoji">🫀</div><h3>Somatická mapa těla</h3><p>Kde tu chuť cítíte? Sevřený hrudník, prázdné břicho ... tělo mluví dřív než hlava. Naučíte se ho slyšet.</p></div>
+      <div class="feat"><div class="emoji">🌊</div><h3>SOS při silné chuti</h3><p>40 vteřin vedeného dechu, když je toho moc. Chuť je vlna ... přichází a odezní.</p></div>
+      <div class="feat"><div class="emoji">🔮</div><h3>Vaše vzorce</h3><p>Rizikové hodiny, spouštěcí emoce, kalendář a vývoj intenzity. A k tomu pohled Híly na to, co z dat vyplývá.</p></div>
+      <div class="feat"><div class="emoji">🌗</div><h3>Menstruační cyklus</h3><p>V luteální fázi tělo opravdu potřebuje víc energie. Silnější chutě nejsou selhání ... je to biologie, a Heallo s ní počítá.</p></div>
+      <div class="feat"><div class="emoji">🪷</div><h3>Klid</h3><p>Dotazník „Zpátky k sobě", zamyšlení dne a meditace od Kateřiny. Pro chvíle, kdy potřebujete zpomalit.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- KATKA -->
+<section class="katka">
+  <div class="container narrow center">
+    <p class="label">Kdo za tím stojí</p>
+    <h2>Já jsem to žila 25 let</h2>
+    <blockquote>„Já jsem byla v takové nenávisti sama k sobě a myslela jsem si, že jsem fakt jediná. Nebyla jsem. A vy taky nejste. Heallo je aplikace, kterou jsem tehdy sama potřebovala ... a kterou teď s pokorou dávám vám."</blockquote>
+    <p class="sig">Kateřina, zakladatelka HEALLO® · <a href="https://www.katerinaheallo.com">katerinaheallo.com</a></p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container narrow">
+    <p class="label center" style="display:block; text-align:center">Časté otázky</p>
+    <h2 class="center">Na co se ženy ptají</h2>
+    <details>
+      <summary>Je Híly náhrada terapie?</summary>
+      <p>Ne. Híly je nástroj pro sebepoznání a podporu ... nenahrazuje odbornou lékařskou ani psychologickou péči. Pokud se trápíte s poruchou příjmu potravy, obraťte se prosím na odborníka. Híly vám u vážných témat sama doporučí odbornou pomoc.</p>
+    </details>
+    <details>
+      <summary>Kolik to stojí?</summary>
+      <p>Teď nic. Aplikace je v beta verzi úplně zdarma ... hledáme ženy, které ji pomohou testovat a tvarovat. Vaše zpětná vazba je pro nás cennější než peníze.</p>
+    </details>
+    <details>
+      <summary>Co se děje s mými záznamy?</summary>
+      <p>Vidíte je jen vy. Data jsou chráněná na úrovni databáze (každá uživatelka má přístup výhradně ke svým záznamům) a nikdy je neprodáváme třetím stranám. Podrobnosti v <a href="https://www.katerinaheallo.com/ochrana-osobnich-udaju/">zásadách ochrany osobních údajů</a>.</p>
+    </details>
+    <details>
+      <summary>Co je intuitivní stravování?</summary>
+      <p>Přístup, který místo vnějších pravidel vrací důvěru vlastnímu tělu: jíst, když máte hlad, přestat, když jste spokojená, a nerozdělovat jídlo na dobré a špatné. Heallo na něm stojí ... proto v aplikaci nenajdete kalorie ani zákazy.</p>
+    </details>
+    <details>
+      <summary>Musím něco instalovat?</summary>
+      <p>Ne. Otevřete aplikaci v prohlížeči mobilu a případně si ji přidáte na plochu jako ikonu. Verze pro App Store se připravuje.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="container">
+    <h2>První krok nezabere víc než minutu</h2>
+    <p style="color: var(--text-mid); max-width: 520px; margin: 0 auto 28px;">Založte si účet, zapište první chvíli s chutí ... a nechte Híly, ať vám odpoví. Možná se v ní najdete, možná ne. Za zkoušku to stojí.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="https://heallo-flame.vercel.app">Vyzkoušet Heallo zdarma</a>
+    </div>
+    <p style="margin-top:14px; font-size:12.5px; color: var(--text-muted);">Bez karty. Bez závazků. S láskou.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-row">
+      <span>© 2026 HEALLO® · Být na své straně</span>
+      <span>
+        <a href="https://www.katerinaheallo.com/obchodni-podminky/">Obchodní podmínky</a> ·
+        <a href="https://www.katerinaheallo.com/ochrana-osobnich-udaju/">Ochrana osobních údajů</a> ·
+        <a href="mailto:katerina@myheallo.info">katerina@myheallo.info</a>
+      </span>
+    </div>
+    <p class="disclaimer">Heallo je nástroj pro sebepoznání a podporu. Nenahrazuje odbornou lékařskou, psychologickou ani psychiatrickou péči. Pokud se trápíte s poruchou příjmu potravy nebo se váš stav zhoršuje, obraťte se prosím na lékaře či terapeuta. V akutní krizi volejte Linku první psychické pomoci 116 123 (nonstop, zdarma).</p>
+  </div>
+</footer>
+
+</body>
+</html>
